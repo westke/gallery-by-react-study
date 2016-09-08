@@ -21,7 +21,7 @@ class ImgFigure extends React.Component {
     return (
       <figure className="img-figure">
         <img src={this.props.data.imageURL}/>
-        <figcaption>
+        <figcaption className="figcaption">
           <h2 className="img-title">{this.props.data.title}</h2>
         </figcaption>
       </figure>
@@ -68,7 +68,7 @@ class AppComponent extends React.Component {
       imgFigures = [];
 
     imageDatas.forEach(function (value, index) {
-      imgFigures.push(<ImgFigure data={value} ref={'imgFigure'+index}/>)
+      imgFigures.push(<ImgFigure data={value} key={'imgFigure'+index}/>)
     })
 
     return (
