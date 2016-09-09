@@ -9,7 +9,8 @@
 const path = require('path');
 const srcPath = path.join(__dirname, '/../src');
 const dfltPort = 8000;
-
+let precss = require('precss');
+let autoprefixer = require('autoprefixer');
 /**
  * Get the default modules object for webpack
  * @return {Object}
@@ -25,28 +26,12 @@ function getDefaultModules() {
     ],
     loaders: [
       {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
-      },
-      {
-        test: /\.scss/,
-        loader: 'style-loader!css-loader!postcss-loader'
-      },
-      {
-        test: /\.less/,
-        loader: 'style-loader!css-loader!less-loader'
-      },
-      {
-        test: /\.styl/,
-        loader: 'style-loader!css-loader!stylus-loader'
+        test: /\.(css|scss)$/,
+        loader: 'style-loader!css-loader!postcss-loader!sass-loader'
       },
       {
         test: /\.(png|jpg|gif|woff|woff2)$/,
         loader: 'url-loader?limit=8192'
-      },
-      {
-        test: /\.(mp4|ogg|svg)$/,
-        loader: 'file-loader'
       },
       {
         test:/\.json$/,
@@ -60,5 +45,11 @@ module.exports = {
   srcPath: srcPath,
   publicPath: '/assets/',
   port: dfltPort,
+  postcss: function () {
+    return {
+      defaults: [precss, autoprefixer],
+      cleaner: [autoprefixer({browsers: ["last 2 version", "firefox 15"]})]
+    };
+  },
   getDefaultModules: getDefaultModules
 };

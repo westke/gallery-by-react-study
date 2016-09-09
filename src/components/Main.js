@@ -21,7 +21,7 @@ class ImgFigure extends React.Component {
     return (
       <figure className="img-figure">
         <img src={this.props.data.imageURL}/>
-        <figcaption className="figcaption">
+        <figcaption>
           <h2 className="img-title">{this.props.data.title}</h2>
         </figcaption>
       </figure>
