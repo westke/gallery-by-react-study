@@ -68,7 +68,7 @@ class AppComponent extends React.Component {
       imgFigures = [];
 
     imageDatas.forEach(function (value, index) {
-      imgFigures.push(<ImgFigure data={value} key={'imgFigure'+index}/>)
+      imgFigures.push(<ImgFigure key={index} data={value} ref={'imgFigure'+index}/>)
     })
 
     return (
