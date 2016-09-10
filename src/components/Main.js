@@ -1,6 +1,6 @@
 require('normalize.css/normalize.css');
 require('styles/App.scss');
-
+// https://github.com/3terrace
 import React from 'react';
 import ReactDOM from 'react-dom';
 
